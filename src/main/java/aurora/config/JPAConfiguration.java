@@ -102,6 +102,7 @@ public class JPAConfiguration {
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.use_sql_comments", "true");
         properties.put("hibernate.use_dynamic_insert", "true");
+        properties.put("hibernate.hikari.maximumPoolSize", 100);
         return properties;
     }
 
