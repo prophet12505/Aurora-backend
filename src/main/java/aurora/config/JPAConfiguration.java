@@ -45,25 +45,25 @@ public class JPAConfiguration {
 //        ===========================
 
         // heroku datasource
-//        URI jdbUri = new URI(System.getenv("JAWSDB_MARIA_URL"));
-//        String username = jdbUri.getUserInfo().split(":")[0];
-//        String password = jdbUri.getUserInfo().split(":")[1];
-//        String port = String.valueOf(jdbUri.getPort());
-//        String jdbUrl = "jdbc:mysql://" + jdbUri.getHost() + ":" + port + jdbUri.getPath();
-//        //dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        dataSource.setUrl(jdbUrl);
-//        dataSource.setUsername(username);
-//        dataSource.setPassword(password);
-//        logger.error("jdbUrl :"+jdbUrl);
-//        System.out.println("jdbUrl :"+jdbUrl);
+        URI jdbUri = new URI(System.getenv("JAWSDB_URL"));
+        String username = jdbUri.getUserInfo().split(":")[0];
+        String password = jdbUri.getUserInfo().split(":")[1];
+        String port = String.valueOf(jdbUri.getPort());
+        String jdbUrl = "jdbc:mysql://" + jdbUri.getHost() + ":" + port + jdbUri.getPath();
+
+        dataSource.setUrl(jdbUrl);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        logger.error("jdbUrl :"+jdbUrl);
+        System.out.println("jdbUrl :"+jdbUrl);
         //=============================
 
         //aws connection
-//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://opp5vq1oxmmgyx12:l5ruuan1ytfrhvdk@hwr4wkxs079mtb19.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/si4m2x66fcdue1dc");
-        //dataSource.setUrl("jdbc:mysql://opp");
-        dataSource.setUsername("opp5vq1oxmmgyx12");
-        dataSource.setPassword("l5ruuan1ytfrhvdk");
+
+//        dataSource.setUrl("jdbc:mysql://opp5vq1oxmmgyx12:l5ruuan1ytfrhvdk@hwr4wkxs079mtb19.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/si4m2x66fcdue1dc");
+//
+//        dataSource.setUsername("opp5vq1oxmmgyx12");
+//        dataSource.setPassword("l5ruuan1ytfrhvdk");
 
 //        ============================
         return dataSource;
