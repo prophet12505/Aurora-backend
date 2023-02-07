@@ -55,6 +55,7 @@ public class CartItemService {
 
 
                 entityManager.getTransaction().commit();
+                entityManager.close();
                 return cartItemToAdd;
             }
         }catch (Exception e){
@@ -78,8 +79,10 @@ public class CartItemService {
             //"SELECT p FROM Product p JOIN CartItem ci ON p.id = ci.productId WHERE ci.userId = :userId"
 
             getCartItemsByUserIdQuery.setParameter("userId",userId);
+            List<CartItemDTO> res=(List<CartItemDTO>)getCartItemsByUserIdQuery.getResultList();
             entityManager.getTransaction().commit();
-            return (List<CartItemDTO>)getCartItemsByUserIdQuery.getResultList();
+            entityManager.close();
+            return res;
 
         }
         catch (Exception e){

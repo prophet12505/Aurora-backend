@@ -46,8 +46,8 @@ public class UserService {
 
     public void createUser(User user) {
         try{
-            EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            // EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+            // EntityManager entityManager = entityManagerFactory.createEntityManager();
 //            entityManager.persist(user);
             userRepository.save(user);
         }
@@ -67,6 +67,7 @@ public class UserService {
         query.setParameter(3, "00111100");
         query.executeUpdate();
         entityManager.getTransaction().commit();
+        entityManager.close();
 
         return userRepository.findAll();
     }
@@ -82,6 +83,7 @@ public class UserService {
 
             int count = ((Number)query.getSingleResult()).intValue();
             entityManager.getTransaction().commit();
+            entityManager.close();
             return count >= 1;
         }
         catch (Exception e)
@@ -106,6 +108,7 @@ public class UserService {
             User res = (User)query.getSingleResult();
             logger.info("user.name:"+res.getName());
             entityManager.getTransaction().commit();
+            entityManager.close();
             return res;
         }
         catch (Exception e){
@@ -130,6 +133,7 @@ public class UserService {
             query.setParameter("email",email);
             query.executeUpdate();
             entityManager.getTransaction().commit();
+            entityManager.close();
             logger.info("SUCCESSFULLY VERIFIED EMAIL!");
             return true;
         }
@@ -152,6 +156,7 @@ public class UserService {
         query.setParameter("email",email);
         User res=(User)query.getSingleResult();
         entityManager.getTransaction().commit();
+        entityManager.close();
         logger.info("SUCCESSFULLY getUserByEmailToken!");
         return res;
 
@@ -162,13 +167,16 @@ public class UserService {
     public User getUserById(long id) {
         EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return entityManager.find(User.class, id);
+        User res=entityManager.find(User.class, id);
+        entityManager.close();
+        return res;
     }
 
     public void updateUser(User user) {
         EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.merge(user);
+        entityManager.close();
     }
 
     public void deleteUser(long id) {
@@ -178,6 +186,7 @@ public class UserService {
         if (user != null) {
             entityManager.remove(user);
         }
+        entityManager.close();
     }
 
 

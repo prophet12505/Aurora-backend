@@ -41,8 +41,8 @@ public class ProductService {
     //return product id
     public Long createAProduct(CreateProductDTO createProductDTO) {
         try{
-            EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            //EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+            //EntityManager entityManager = entityManagerFactory.createEntityManager();
             //entityManager.getTransaction().begin();
             Product product =new Product();
             product.setName(createProductDTO.getName());
@@ -98,6 +98,7 @@ public class ProductService {
                 }
             }
             entityManager.getTransaction().commit();
+            entityManager.close();
             logger.info("res:"+res);
             return res;
         }catch (Exception e){
@@ -124,6 +125,7 @@ public class ProductService {
 
             }
             entityManager.getTransaction().commit();
+            entityManager.close();
             return true;
         }
         catch (Exception e){
@@ -139,6 +141,7 @@ public class ProductService {
             Query query=entityManager.createQuery("SELECT p FROM Product p WHERE id IN (SELECT ptpck.productId FROM ProductToProductCategoryKey ptpck WHERE ptpck.productCategoryId=:categoryId)");
             query.setParameter("categoryId",categoryId);
             entityManager.getTransaction().commit();
+            entityManager.close();
             return query.getResultList();
         }catch (Exception e){
             logger.error(e.getMessage());
