@@ -1,0 +1,10 @@
+2023-02-07T16:55:18.349664+00:00 app[web.1]: 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+2023-02-07T16:55:18.349692+00:00 app[web.1]: 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859)
+2023-02-07T16:55:18.349721+00:00 app[web.1]: 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734)
+2023-02-07T16:55:18.349749+00:00 app[web.1]: 	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+2023-02-07T16:55:18.349777+00:00 app[web.1]: 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+2023-02-07T16:55:18.349819+00:00 app[web.1]: 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+2023-02-07T16:55:18.350921+00:00 app[web.1]: 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+2023-02-07T16:55:18.350959+00:00 app[web.1]: 	at java.base/java.lang.Thread.run(Thread.java:1589)
+2023-02-07T16:55:19.079085+00:00 app[web.1]: 2023-02-07T16:55:19.078Z  WARN 2 --- [io-22173-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /images/icons/gear.png
+2023-02-07T16:55:19.195369+00:00 app[web.1]: 2023-02-07T16:55:19.195Z  WARN 2 --- [io-22173-exec-5] o.s.web.servlet.PageNotFound             : No mapping for GET /favicon.ico

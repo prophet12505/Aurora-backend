@@ -123,8 +123,8 @@ public class UserService {
             entityManager.getTransaction().begin();
             logger.info("token:"+token);
 
-
-            byte[] decodedBytes = Base64.getDecoder().decode(token);
+            //Base64.getDecoder().decode(arg[0].trim());
+            byte[] decodedBytes = Base64.getDecoder().decode(token.trim());
             String email = new String(decodedBytes);
             logger.info("email:"+email);
     //        String jpql="SELECT u From User u WHERE u.email=:email";
