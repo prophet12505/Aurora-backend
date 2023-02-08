@@ -141,8 +141,9 @@ public class ProductService {
             Query query=entityManager.createQuery("SELECT p FROM Product p WHERE id IN (SELECT ptpck.productId FROM ProductToProductCategoryKey ptpck WHERE ptpck.productCategoryId=:categoryId)");
             query.setParameter("categoryId",categoryId);
             entityManager.getTransaction().commit();
+            List<Product> res=query.getResultList();
             entityManager.close();
-            return query.getResultList();
+            return res;
         }catch (Exception e){
             logger.error(e.getMessage());
             return null;

@@ -57,9 +57,7 @@ public class JPAConfiguration {
         logger.error("jdbUrl :"+jdbUrl);
         System.out.println("jdbUrl :"+jdbUrl);
         //=============================
-
         //aws connection
-
 //        dataSource.setUrl("jdbc:mysql://opp5vq1oxmmgyx12:l5ruuan1ytfrhvdk@hwr4wkxs079mtb19.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/si4m2x66fcdue1dc");
 //
 //        dataSource.setUsername("opp5vq1oxmmgyx12");
