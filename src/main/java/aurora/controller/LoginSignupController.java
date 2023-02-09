@@ -7,6 +7,7 @@ import aurora.service.ProductService;
 import aurora.service.UserService;
 import aurora.util.Constants;
 import aurora.util.MailSender;
+import jakarta.mail.MessagingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +86,7 @@ public class LoginSignupController {
     private String appDomain;
 
     @PostMapping("/signup")
-    public GeneralMessageDTO signup(@RequestBody User user){
+    public GeneralMessageDTO signup(@RequestBody User user) throws MessagingException {
         if(userService.emailExist(user.getEmail())){
             System.out.println("email already exists");
             return new GeneralMessageDTO("Sign up failed: Email already exists", Constants.SIGNUP,false);
