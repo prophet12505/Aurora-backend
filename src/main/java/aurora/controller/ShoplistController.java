@@ -71,8 +71,8 @@ public class ShoplistController {
 
     }
 
-    @PostMapping("/query-product-by-keyword")
-    public  List<Product> queryProductByKeyword(@RequestBody String keyword){
+    @GetMapping("/query-product-by-keyword")
+    public  List<Product> queryProductByKeyword(@RequestParam(name="keyword") String keyword){
 
         return productService.queryProductByKeyword(keyword);
     }
