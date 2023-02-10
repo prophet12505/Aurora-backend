@@ -4,14 +4,12 @@ import aurora.DTO.CartItemDTO;
 import aurora.entity.CartItem;
 import aurora.entity.Product;
 import aurora.entity.ProductCategory;
+import aurora.entity.User;
 import aurora.service.CartItemService;
 import aurora.service.CategoryService;
 import aurora.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +60,6 @@ public class ShoplistController {
     @GetMapping("/cart/add-to-cart")
     public CartItem addToCart(@RequestParam(name = "userId") long userId,@RequestParam(name = "productId") long productId, @RequestParam(name="quantity") int quantity){
         return cartItemService.addToCart(userId,productId,quantity);
-
     }
 
     // to be finished
@@ -74,5 +71,10 @@ public class ShoplistController {
 
     }
 
+    @PostMapping("/query-product-by-keyword")
+    public  List<Product> queryProductByKeyword(@RequestBody String keyword){
+
+        return productService.queryProductByKeyword(keyword);
+    }
 
 }

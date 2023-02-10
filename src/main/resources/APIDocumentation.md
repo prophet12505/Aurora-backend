@@ -99,6 +99,14 @@ product
 ### RESPONSE BODY
 generalMessageDTO
 
+## QUERY PRODUCT BY KEYWORDS
+### HTTP REQUEST
+POST /query-product-by-keyword
+### REQUEST BODY
+keyword:[keyword string]
+### RESPONSE BODY
+List<Product>
+
 
 =============category related===============================
 ## GET ALL CATEORY

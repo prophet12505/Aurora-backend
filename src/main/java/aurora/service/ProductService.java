@@ -70,6 +70,25 @@ public class ProductService {
         return productRepository.findById(id).get();
     }
 
+    public List<Product> queryProductByKeyword(String keyword){
+        try{
+            EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
+            Query query=entityManager.createQuery("SELECT p FROM Product p WHERE p.name LIKE :keyword OR p.description LIKE :keyword");
+            query.setParameter("keyword",keyword);
+            List<Product> res=query.getResultList();
+            entityManager.getTransaction().commit();
+            entityManager.close();
+            return res;
+
+
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            return null;
+        }
+    }
+
     public List<Long> createProductCategory(List<String> categoryNames) {
         List<Long> res=new ArrayList<>();
         try{
